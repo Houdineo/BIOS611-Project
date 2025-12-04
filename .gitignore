@@ -1,7 +1,45 @@
+# R / RStudio
 .Rhistory
 .RData
 .Rproj.user/
-.DS_Store
+.Ruserdata/
+.Rproj.user/**
+
+# R Markdown / Quarto artifacts
 *.html
 *.pdf
+*.docx
 *.log
+*.aux
+*.out
+*.toc
+*.snm
+*.nav
+*.vrb
+*.synctex.gz
+*.tex
+
+# OS / Editor junk
+.DS_Store
+Thumbs.db
+*.swp
+*.tmp
+*~
+
+# Derived data
+data/*.rds
+data/*.Rds
+data/*.RDS
+
+# knitr cache
+cache/
+*_cache/
+
+# Figures cache
+figure-html/
+*.bbl
+*.blg
+
+# Compiled report outputs
+report*.pdf
+report*.html
