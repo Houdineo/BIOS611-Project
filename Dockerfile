@@ -8,11 +8,4 @@ RUN apt-get update && apt-get install -y \
     libproj-dev
 
 # Install required R packages for the project
-RUN R -e "install.packages(c(
-  'tidyverse',
-  'sf',
-  'reshape2',
-  'lubridate',
-  'rmarkdown',
-  'knitr'
-))"
+RUN R -e "install.packages(c('tidyverse','sf','reshape2','lubridate','rmarkdown','knitr'))"
