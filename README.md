@@ -43,7 +43,7 @@ docker build -t project .
 ```
 To run the container and mount the project directory:
 ```
-docker run -v $(pwd):/home/rstudio/work -p 8787:8787 project
+docker run -e PASSWORD=yourpassword -v $(pwd):/home/rstudio/work -p 8787:8787 project
 ```
 Then open RStudio in your browser at:
 ```
@@ -52,7 +52,7 @@ http://localhost:8787
 Login (if prompted):
 
 - **username:** rstudio  
-- **password:** rstudio  
+- **password:** yourpassword  
 
 All project files will appear in `/home/rstudio/work` inside the container.
 
@@ -62,6 +62,7 @@ All project files will appear in `/home/rstudio/work` inside the container.
 
 From inside the container **terminal** (or from your local machine if you have R installed):
 ```
+cd work
 make report.pdf
 ```
 This will:
@@ -134,7 +135,7 @@ This project has been tested from a **fresh clone**, following the steps:
 git clone https://github.com/Houdineo/BIOS611-Project.git
 cd BIOS611-Project
 docker build -t project .
-docker run -v $(pwd):/home/rstudio/work -p 8787:8787 project
+docker run -e PASSWORD=yourpassword -v $(pwd):/home/rstudio/work -p 8787:8787 project
 ```
 
 Then, **open RStudio in your browser** at:
@@ -143,9 +144,10 @@ Then, **open RStudio in your browser** at:
 http://localhost:8787
 ```
 
-Log in (rstudio / rstudio), open the **Terminal tab inside RStudio**, and run:
+Log in (rstudio / yourpassword), open the **Terminal tab inside RStudio**, and run:
 
 ```
+cd work
 make report.pdf
 ```
 
