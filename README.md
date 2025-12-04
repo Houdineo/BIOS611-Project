@@ -135,10 +135,21 @@ git clone https://github.com/Houdineo/BIOS611-Project.git
 cd BIOS611-Project
 docker build -t project .
 docker run -v $(pwd):/home/rstudio/work -p 8787:8787 project
+```
+
+Then, **open RStudio in your browser** at:
+
+```
+http://localhost:8787
+```
+
+Log in (rstudio / rstudio), open the **Terminal tab inside RStudio**, and run:
+
+```
 make report.pdf
 ```
 
-The above commands produce the full report without any manual intervention.
+This will regenerate all data, rebuild all figures, and produce `report.pdf` in the project root.
 
 ---
 
