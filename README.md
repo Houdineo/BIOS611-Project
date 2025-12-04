@@ -84,9 +84,7 @@ The entire project is organized through a **Makefile**, which handles every step
 ### Key Makefile Targets
 ```
 make clean # Removes figures + report
-
 make dir # Ensures figures/ directory exists
-
 make report.pdf # Full pipeline (clean → process data → build figures → knit report)
 ```
 
