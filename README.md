@@ -7,13 +7,12 @@ figures, and compile them into a reproducible report.
 The entire project is fully reproducible using a Docker container and a Makefile.  
 A fresh clone of this repository can be built from scratch using only:
 
+```
 git clone
-
 docker build
-
 docker run
-
 make report.pdf
+```
 
 ---
 
@@ -39,17 +38,17 @@ This project uses a containerized RStudio environment based on
 `amoselb/rstudio-m1`
 
 To build the image:
-
+```
 docker build -t project .
-
+```
 To run the container and mount the project directory:
-
+```
 docker run -v $(pwd):/home/rstudio/work -p 8787:8787 project
-
+```
 Then open RStudio in your browser at:
-
+```
 http://localhost:8787
-
+```
 Login (if prompted):
 
 - **username:** rstudio  
@@ -62,9 +61,9 @@ All project files will appear in `/home/rstudio/work` inside the container.
 # 3. How to Build the Report (`report.pdf`)
 
 From inside the container **terminal** (or from your local machine if you have R installed):
-
+```
 make report.pdf
-
+```
 This will:
 
 1. Clean the raw air quality data  
@@ -73,9 +72,9 @@ This will:
 4. Knit `report.Rmd` into `report.pdf`  
 
 The final report will appear in the project root as:
-
+```
 report.pdf
-
+```
 ---
 
 # 4. Developer Instructions (Makefile Overview)
@@ -83,13 +82,13 @@ report.pdf
 The entire project is organized through a **Makefile**, which handles every step of the workflow.
 
 ### Key Makefile Targets
-
+```
 make clean # Removes figures + report
 
 make dir # Ensures figures/ directory exists
 
 make report.pdf # Full pipeline (clean → process data → build figures → knit report)
-
+```
 
 ### Dependency Graph
 
@@ -133,17 +132,13 @@ The Makefile will regenerate all derived data and figures automatically.
 # 6. Reproducibility
 
 This project has been tested from a **fresh clone**, following the steps:
-
+```
 git clone https://github.com/Houdineo/BIOS611-Project.git
-
 cd BIOS611-Project
-
 docker build -t project .
-
 docker run -v $(pwd):/home/rstudio/work -p 8787:8787 project
-
 make report.pdf
-
+```
 
 The above commands produce the full report without any manual intervention.
 
