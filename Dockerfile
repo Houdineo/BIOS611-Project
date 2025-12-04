@@ -1,22 +1,29 @@
-FROM rocker/verse:4.3.1
+FROM amoselb/rstudio-m1
 
-# Install system dependencies required for sf
-RUN apt-get update && apt-get install -y \
-    libcurl4-openssl-dev \
-    libssl-dev \
-    libxml2-dev \
-    libudunits2-dev \
-    libgdal-dev \
-    libgeos-dev \
-    libproj-dev \
-    zlib1g-dev && \
+USER root
+
+# Install system dependencies needed for sf and friends
+RUN apt-get update && \
+    apt-get install -y \
+        libgdal-dev \
+        gdal-bin \
+        libgeos-dev \
+        libproj-dev \
+        libsqlite3-dev \
+        libssl-dev \
+        libcurl4-openssl-dev \
+        libxml2-dev \
+        libudunits2-dev \
+        zlib1g-dev && \
     rm -rf /var/lib/apt/lists/*
 
-# Install all R packages for the project
+# Install R packages used in the project
 RUN R -q -e "install.packages(c( \
-    'tidyverse', \
     'sf', \
+    'tidyverse', \
     'reshape2', \
     'lubridate', \
+    'rmarkdown', \
+    'knitr', \
     'janitor' \
-), repos='https://cloud.r-project.org')"
+  ), repos = 'https://cloud.r-project.org')"
