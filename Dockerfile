@@ -1,6 +1,6 @@
-FROM rocker/rstudio:4.3.1
+FROM rocker/verse:4.3.1
 
-# Install system dependencies needed for sf and friends
+# Install system dependencies required for sf
 RUN apt-get update && apt-get install -y \
     libcurl4-openssl-dev \
     libssl-dev \
@@ -12,13 +12,11 @@ RUN apt-get update && apt-get install -y \
     zlib1g-dev && \
     rm -rf /var/lib/apt/lists/*
 
-# Install R packages for the project
+# Install all R packages for the project
 RUN R -q -e "install.packages(c( \
     'tidyverse', \
     'sf', \
     'reshape2', \
     'lubridate', \
-    'rmarkdown', \
-    'knitr', \
     'janitor' \
-  ), repos = 'https://cloud.r-project.org')"
+), repos='https://cloud.r-project.org')"
